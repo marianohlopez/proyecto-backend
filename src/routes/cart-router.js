@@ -19,12 +19,11 @@ cartRouter.route('/:id/productos')
     .get(async (req, res) => {
         const { id } = req.params
         res.json(await cart.getCart(Number(id)))
-    });
-
-cartRouter.route('/:id/productos')
+    })
     .post(async (req, res) => {
         const { id } = req.params
-        res.json(await cart.save(Number(id)))
+        const { idProd } = req.body
+        res.json(await cart.save(Number(id), Number(idProd)))
     });
 
 cartRouter.route('/:id/productos/:id_prod')

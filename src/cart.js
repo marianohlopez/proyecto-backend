@@ -30,11 +30,12 @@ class Cart {
         }
     }
 
-    async save(id) {
+    async save(cartId, productId) {
         const products = await api.getAll();
-        const cartProduct = products.find(product => product.id === id)
+        const cartProduct = products.find(product => product.id === productId)
         const response = await this.getAll()
-        response[response.length - 1].productos.push(cartProduct);
+        const position = response.findIndex(cart => cart.cartId === cartId)
+        response[position].productos.push(cartProduct);
         try {
             await fs.promises.writeFile(this.archivo, JSON.stringify(response, null, 2))
             return 'Se agrego el producto al carrito';
@@ -43,6 +44,20 @@ class Cart {
             throw new Error(`Error al guardar un nuevo objeto: ${err}`)
         }
     }
+
+    /*     async save(id) {
+            const products = await api.getAll();
+            const cartProduct = products.find(product => product.id === id)
+            const response = await this.getAll()
+            response[response.length - 1].productos.push(cartProduct);
+            try {
+                await fs.promises.writeFile(this.archivo, JSON.stringify(response, null, 2))
+                return 'Se agrego el producto al carrito';
+            }
+            catch (err) {
+                throw new Error(`Error al guardar un nuevo objeto: ${err}`)
+            }
+        } */
 
     async getCart(id) {
 
@@ -81,9 +96,9 @@ class Cart {
     }
 
     async deleteById(cartId, productId) {
-        const position = cartId - 1
         const response = await this.getAll();
         const array = [...response]
+        const position = array.findIndex(cart => cart.cartId === cartId)
         //encuentro el carrito
         const findCart = response.filter((item) => item.cartId === cartId)
         //elimino el producto

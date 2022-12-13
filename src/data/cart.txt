@@ -33,5 +33,28 @@
     "cartId": 3,
     "timestamp": 1670508853277,
     "productos": []
+  },
+  {
+    "cartId": 4,
+    "timestamp": 1670969005084,
+    "productos": [
+      {
+        "title": "Calculadora",
+        "price": 234.56,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+        "id": 2
+      },
+      {
+        "title": "Computadora",
+        "price": 345.67,
+        "thumbnail": "https://media.istockphoto.com/id/1209901819/es/vector/el-ordenador-port%C3%A1til-muestra-la-ilustraci%C3%B3n-de-diagramas-de-colores.jpg?s=612x612&w=is&k=20&c=zJMhXEVlFSMoIndlIRQqo9MXdvqLCWpv0e9gX-ysP-c=",
+        "id": 3
+      }
+    ]
+  },
+  {
+    "cartId": 5,
+    "timestamp": 1670970099060,
+    "productos": []
   }
 ]

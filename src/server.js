@@ -18,7 +18,7 @@ const checkAdmin = (req, res, next) => {
     }
 }
 
-app.use('/api/productos', checkAdmin, baseRouter);
+app.use('/api/productos', baseRouter);
 app.use('/api/carrito', checkAdmin, cartRouter);
 
 app.use((req, res, next) => {
